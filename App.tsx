@@ -1,32 +1,22 @@
-import {Dimensions, StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import WebView from 'react-native-webview';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {HomeScreen} from './src/screens/HomeScreen';
+import {TestScreen} from './src/screens/TestScreen';
 
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').width;
+const Stack = createNativeStackNavigator();
 
-const App = () => {
+function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <WebView
-        style={styles.webview}
-        source={{uri: 'https://www.google.com/'}}
-      />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Test" component={TestScreen} />
+        {/* 추가 스크린은 여기에 계속해서 등록하면 됩니다. */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  webview: {
-    flex: 1,
-    width: deviceWidth,
-    height: deviceHeight,
-  },
-});
+}
 
 export default App;
