@@ -12,10 +12,10 @@ export const TestScreen = () => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text style={{color: 'black', fontSize: 30}}>HomeScreen</Text>
+      <Text style={{color: 'black', fontSize: 30}}>TestScreen</Text>
       <Button
-        title="Go to TestScreen"
-        onPress={() => navigation.navigate('Test')}
+        title="Go to HomeScreen"
+        onPress={() => navigation.navigate('Home')}
       />
     </View>
   );
