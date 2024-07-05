@@ -1,10 +1,12 @@
+// WebviewContainer.tsx
+
 import React from 'react';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import {StackActions} from '@react-navigation/native';
 
 export default function WebviewContainer({navigation, route}) {
-  const targetUrl = 'http://127.0.0.1:3000';
-  // const url = route.params?.url ?? targetUrl + '/community';
+  const targetUrl = 'http://10.0.2.2:3000/';
+  const url = route.params?.url ?? targetUrl;
 
   const requestOnMessage = async (e: WebViewMessageEvent): Promise<void> => {
     const nativeEvent = JSON.parse(e.nativeEvent.data);
@@ -26,7 +28,7 @@ export default function WebviewContainer({navigation, route}) {
   return (
     <WebView
       originWhitelist={['*']}
-      source={{uri: 'http://127.0.0.1:3000'}}
+      source={{uri: url}}
       onMessage={requestOnMessage}
     />
   );
